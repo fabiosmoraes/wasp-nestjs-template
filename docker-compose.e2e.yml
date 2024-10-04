@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16.2-alpine
+    container_name: project_name_snake_case_e2e_test
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_DB: project_name_snake_case_e2e_test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'project_name_snake_case_rabbitmq_e2e_test'
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - 5673:5672
+      - 15673:15672
